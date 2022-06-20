@@ -1,6 +1,6 @@
 # hurricane-photo
 
-Authors: Ben Carter, Katrina Hill, Bishal Khanal, Matt Rangel
+Authors: Ben Carter, Katrina Hill, Bishal Khanal, Roger Wells, Matt Rangel
 
 ## Summary
 
