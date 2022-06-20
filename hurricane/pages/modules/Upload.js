@@ -72,8 +72,8 @@ function Upload()
         <ChakraProvider>
             <Center bg="black" color="white" padding={8}>
                 <VStack spacing={7}>
-                    <Heading>Upload Your Photos</Heading>
-                    <Text>Take a look at all your photos!</Text>
+                    <Heading>Photo Upload Page</Heading>
+                    {/* <Text>Your Photo Gallery</Text> */}
                     <HStack>
                         <input
                             type="file"
@@ -95,7 +95,7 @@ function Upload()
                             </Center>
                         )}
                     </HStack>
-                    <Heading>Your Photos</Heading>
+                    <Heading>Your Photo Gallery</Heading>
                     <SimpleGrid columns={3} spacing={8}>
                         {allPhotos.length !== 0 &&
                             allPhotos.map((photo) =>
