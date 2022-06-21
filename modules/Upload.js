@@ -1,73 +1,65 @@
-import
-    {
-        Center,
-        Text,
-        Heading,
-        VStack,
-        Button,
-        Input,
-        HStack,
-        Container,
-        SimpleGrid,
-        Box,
-        Image,
-        Spinner,
-    } from "@chakra-ui/react";
+import {
+Center,
+Text,
+Heading,
+VStack,
+Button,
+Input,
+HStack,
+Container,
+SimpleGrid,
+Box,
+Image,
+Spinner,
+} from "@chakra-ui/react";
 
 import { useState, useEffect } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 //   import { upload } from "@testing-library/user-event/dist/upload";
 //   import userEvent from '@testing-library/user-event'
 
-function Upload()
-{
+function Upload() {
     const [isSelected, setIsSelected] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [allPhotos, setAllPhotos] = useState([]);
     const [uploadSuccessful, setUploadSuccessful] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
 
-    // useEffect(() =>
-    // {
-    //     fetch("http://127.0.0.1:8000/photos")
-    //         .then((response) => response.json())
-    //         .then((data) =>
-    //         {
-    //             console.log(data);
-    //             setAllPhotos(data);
-    //         });
-    // }, [uploadSuccessful]);
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/photos")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setAllPhotos(data);
+            });
+    }, [uploadSuccessful]);
 
-    const onInputChange = (e) =>
-    {
+    const onInputChange = (e) => {
         console.log(e.target.files[0]);
         setIsSelected(true);
 
         setSelectedFile(e.target.files[0]);
     };
-    const onButtonClick = (e) =>
-    {
+    const onButtonClick = (e) => {
         console.log("Button clicked..");
         e.target.value = "";
     };
 
-    // const onFileUpload = (e) =>
-    // {
-    //     setShowSpinner(true);
-    //     const formData = new FormData();
-    //     formData.append("file", selectedFile, selectedFile.name);
-    //     fetch("http://127.0.0.1:8000/photos", {
-    //         method: "POST",
-    //         body: formData,
-    //     })
-    //         .then((response) => response.json())
-    //         .then((data) =>
-    //         {
-    //             console.log("Success posting!!");
-    //             setUploadSuccessful(!uploadSuccessful);
-    //             setShowSpinner(false);
-    //         });
-    // };
+    const onFileUpload = (e) => {
+        setShowSpinner(true);
+        const formData = new FormData();
+        formData.append("file", selectedFile, selectedFile.name);
+        fetch("http://127.0.0.1:8000/photos", {
+            method: "POST",
+            body: formData,
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Success posting!!");
+                setUploadSuccessful(!uploadSuccessful);
+                setShowSpinner(false);
+            });
+    };
     return (
         <ChakraProvider>
             <Center bg="black" color="white" padding={8}>
@@ -85,7 +77,7 @@ function Upload()
                             size="lg"
                             colorScheme="red"
                             isDisabled={!isSelected}
-                            // onClick={onFileUpload}
+                            onClick={onFileUpload}
                         >
                             Upload Photo
                         </Button>
@@ -98,12 +90,11 @@ function Upload()
                     <Heading>Your Photo Gallery</Heading>
                     <SimpleGrid columns={3} spacing={8}>
                         {allPhotos.length !== 0 &&
-                            allPhotos.map((photo, index) =>
-                            {
+                            allPhotos.map((photo, index) => {
                                 return (
                                     <Image
-                                        alt = ""
-                                        key = {index}
+                                        alt=""
+                                        key={index}
                                         borderRadius={25}
                                         boxSize="300px"
                                         src={photo["photo_url"]}
