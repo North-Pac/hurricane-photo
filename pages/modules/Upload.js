@@ -102,7 +102,7 @@ function Upload()
                             {
                                 return (
                                     <Image
-                                        alt = "image"
+                                        alt = ""
                                         key = {index}
                                         borderRadius={25}
                                         boxSize="300px"
