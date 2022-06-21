@@ -98,10 +98,11 @@ function Upload()
                     <Heading>Your Photo Gallery</Heading>
                     <SimpleGrid columns={3} spacing={8}>
                         {allPhotos.length !== 0 &&
-                            allPhotos.map((photo) =>
+                            allPhotos.map((photo, index) =>
                             {
                                 return (
                                     <Image
+                                        key = {index}
                                         borderRadius={25}
                                         boxSize="300px"
                                         src={photo["photo_url"]}
