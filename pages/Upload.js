@@ -17,6 +17,10 @@ import { useState, useEffect } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 //   import { upload } from "@testing-library/user-event/dist/upload";
 //   import userEvent from '@testing-library/user-event'
+import Link from 'next/link'
+import LoginForm from '../components/LoginForm'
+import { signOut } from "next-auth/react";
+
 
 function Upload() {
     const [isSelected, setIsSelected] = useState(false);
@@ -24,9 +28,12 @@ function Upload() {
     const [allPhotos, setAllPhotos] = useState([]);
     const [uploadSuccessful, setUploadSuccessful] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
+    
+
+ 
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/photos")
+        fetch("https://photo-faker.vercel.app/api/photos")
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
@@ -45,11 +52,17 @@ function Upload() {
         e.target.value = "";
     };
 
+    const logoutHandler = () => {
+        signOut();
+      };
+
+
+
     const onFileUpload = (e) => {
         setShowSpinner(true);
         const formData = new FormData();
         formData.append("file", selectedFile, selectedFile.name);
-        fetch("http://127.0.0.1:8000/photos", {
+        fetch("https://photo-faker.vercel.app/api/photos", {
             method: "POST",
             body: formData,
         })
@@ -61,7 +74,16 @@ function Upload() {
             });
     };
     return (
+      
         <ChakraProvider>
+                 <Link href="/">
+                <a
+                  className="text-danger"
+                  onClick={logoutHandler}
+                >
+                  Logout
+                </a>
+              </Link>
             <Center bg="black" color="white" padding={8}>
                 <VStack spacing={7}>
                     <Heading>Photo Upload Page</Heading>
@@ -101,6 +123,7 @@ function Upload() {
                                         fallbackSrc="https://via.placeholder.com/150"
                                         objectFit="cover"
                                     />
+                                
                                 );
                             })}
                     </SimpleGrid>
