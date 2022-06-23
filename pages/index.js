@@ -17,7 +17,7 @@ export default function Home()
     <ChakraProvider>
       <Box>
         <>
-          <Header pageName="Home" />
+          <Header pageName="色色" />
           <Center bg="grey" color="white" padding={8} minH="80vh">
             {!user && <LoginForm onSubmit={login} />}
           </Center>

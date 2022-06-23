@@ -51,7 +51,7 @@ export default function LoginForm({ onSubmit })
     return (
         <Flex width="full" align="center" justifyContent="center" margin="2rem 0rem">
             <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg"
-                backgroundColor="lightgray" border>
+                backgroundColor="rgb(51 65 85)" border>
                 <Box textAlign="center">
                     <Heading color="darkgrey">Login</Heading>
                 </Box>
@@ -65,7 +65,7 @@ export default function LoginForm({ onSubmit })
                             <FormLabel color="darkgrey">Password</FormLabel>
                             <Input id="pwInput" type="password" placeholder="**********" backgroundColor="white" color="darkgrey" />
                         </FormControl>
-                        <Button width="full" mt={4} type="submit" backgroundColor="darkgrey"
+                        <Button width="full" mt={4} type="submit" backgroundColor="rgb(148 163 184)"
                             onClick={loginHandler}>
                             Sign In
                         </Button>
