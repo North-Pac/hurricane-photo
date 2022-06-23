@@ -86,6 +86,9 @@ function Upload()
             <Center bg="grey" color="white" padding={8}>
                 <VStack spacing={7}>
                     <Heading>Upload</Heading>
+                    <p>
+                        This tool will colorize any photo you upload. See your photos through an AI lens! 
+                    </p>
                     {/* <Text>Your Photo Gallery</Text> */}
                     <HStack>
                         <input
