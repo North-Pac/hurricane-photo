@@ -9,15 +9,15 @@ export default function Bio(props)
                 <Image src={props.member.PictureUrl} alt={props.member.Name} maxWidth="200px"
                     borderRadius="100px" />
                 <Heading fontSize="3xl">
-                        {props.member.Name}<br></br>
+                    {props.member.Name}<br></br>
                 </Heading>
                 <Flex flexDirection="row" columnGap="1em">
-                <Link href={props.member.LinkedIn} fontSize="x-small">Linked In</Link>
-                <Text fontSize="x-small">|</Text>
-                <Link href={props.member.GitHub} fontSize="x-small">GitHub</Link>
-                </Flex>              
+                    <Link href={props.member.LinkedIn} fontSize="x-small">LinkedIn</Link>
+                    <Text fontSize="x-small">|</Text>
+                    <Link href={props.member.GitHub} fontSize="x-small">GitHub</Link>
+                </Flex>
                 <Text noOfLines={5} fontSize='x-small'>
-                            {props.member.Quote}
+                    {props.member.Quote}
                 </Text>
             </Flex>
         </ChakraProvider>

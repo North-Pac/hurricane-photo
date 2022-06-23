@@ -23,8 +23,8 @@ export default function About_us()
             'Name': 'Bishal Khanal',
             'Quote': 'Bishal adds some stuff about himself',
             'PictureUrl': 'https://media-exp1.licdn.com/dms/image/C5603AQFpQEqAL__z9A/profile-displayphoto-shrink_400_400/0/1538070916520?e=1661385600&v=beta&t=eXTkUYApfHXfP6FjQ6JMabwl7Z3_-m0IqLOpSXhbPf8',
-            'LinkedIn': '',
-            'GitHub': ''
+            'LinkedIn': 'https://www.linkedin.com/in/bishal-khanal/',
+            'GitHub': 'https://github.com/bkhanal4351'
         },
         {
             'Name': 'Matt Rangel',
