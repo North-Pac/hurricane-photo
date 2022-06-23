@@ -22,6 +22,7 @@ import Link from 'next/link'
 import LoginForm from '../components/LoginForm'
 import { signOut } from "next-auth/react";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 
 function Upload()
@@ -130,6 +131,7 @@ function Upload()
                     </SimpleGrid>
                 </VStack>
             </Center>
+            <Footer />
         </ChakraProvider>
     );
 }

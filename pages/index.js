@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Box } from "@chakra-ui/react"
 import { ChakraProvider } from "@chakra-ui/react";
 import { Center } from '@chakra-ui/react'
+import Footer from '../components/Footer'
 
 export default function Home()
 {
@@ -21,6 +22,7 @@ export default function Home()
           <Center bg="grey" color="white" padding={8} minH="80vh">
             {!user && <LoginForm onSubmit={login} />}
           </Center>
+          <Footer />
         </>
       </Box>
     </ChakraProvider>
