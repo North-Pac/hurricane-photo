@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import { Box, Flex, FormControl, FormLabel, Heading, Input, Button } from "@chakra-ui/react"
+import { useAuth } from '../contexts/auth'
 
 export default function LoginForm({ onSubmit })
 {
-
+    const { user, login, logout } = useAuth();
     const initialValues = {
         username: '',
         password: '',
     }
 
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
-//     const handleSubmit = event => {
-//       event.preventDefault();
-//       alert(`Email: ${email} & Password: ${password}`);
-//     };
-//     // ...
-//   }
+    //     const [email, setEmail] = useState('');
+    //     const [password, setPassword] = useState('');
+    //     const handleSubmit = event => {
+    //       event.preventDefault();
+    //       alert(`Email: ${email} & Password: ${password}`);
+    //     };
+    //     // ...
+    //   }
 
     const [values, setValues] = useState(initialValues);
 
@@ -36,27 +37,39 @@ export default function LoginForm({ onSubmit })
         setValues({ ...values, [name]: value });
     }
 
+    function loginHandler(event)
+    {
+        event.preventDefault();
+        var name = document.getElementById('emailInput').value;
+        var pw = document.getElementById('pwInput').value;
+        user.login(name, pw);
+
+        //note: figure out how this should actually be done with AuthProvider
+    }
+
     // https://blog.logrocket.com/how-to-create-forms-with-chakra-ui-in-react-apps/
     return (
         <Flex width="full" align="center" justifyContent="center" margin="2rem 0rem">
-            <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg">
+            <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg"
+                backgroundColor="lightgray" border>
                 <Box textAlign="center">
-                    <Heading>Login</Heading>
+                    <Heading color="darkgrey">Login</Heading>
                 </Box>
                 <Box my={4} textAlign="left">
                     <form>
                         <FormControl>
-                            <FormLabel>Email</FormLabel>
-                            <Input type="email" placeholder="email@email.com" />
+                            <FormLabel color="darkgrey">Email</FormLabel>
+                            <Input id="emailInput" type="email" placeholder="email@email.com" backgroundColor="white" color="darkgrey" />
                         </FormControl>
                         <FormControl mt={6}>
-                            <FormLabel>Password</FormLabel>
-                            <Input type="password" placeholder="**********" />
+                            <FormLabel color="darkgrey">Password</FormLabel>
+                            <Input id="pwInput" type="password" placeholder="**********" backgroundColor="white" color="darkgrey" />
                         </FormControl>
-                        <Button width="full" mt={4} type="submit">
+                        <Button width="full" mt={4} type="submit" backgroundColor="darkgrey"
+                            onClick={loginHandler}>
                             Sign In
                         </Button>
-                    {/* <form className="flex flex-col w-1/2 gap-4 p-8 mx-auto my-4 text-center bg-green-200 border-2 border-green-400 rounded-lg text-md" onSubmit={submitHandler}>
+                        {/* <form className="flex flex-col w-1/2 gap-4 p-8 mx-auto my-4 text-center bg-green-200 border-2 border-green-400 rounded-lg text-md" onSubmit={submitHandler}>
                         <div className="flex flex-col ">
                             <label className="mb-2 font-bold uppercase text-grey-darkest" htmlFor="username">User Name</label>
                             <input className="px-3 py-2 border text-grey-darkest" type="text" name="username" id="username" value={values.username} onChange={inputChangeHandler} placeholder="User Name" />

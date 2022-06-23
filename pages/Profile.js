@@ -10,20 +10,20 @@ import { Box } from "@chakra-ui/react"
 import { ChakraProvider } from "@chakra-ui/react";
 import { Center } from '@chakra-ui/react'
 
-export default function Home()
+export default function Profile()
 {
-  const { user, login, logout } = useAuth();
-  return (
-    <ChakraProvider>
-      <Box>
-        <>
-          <Header pageName="Home" />
-          <Center bg="grey" color="white" padding={8} minH="80vh">
-            {!user && <LoginForm onSubmit={login} />}
-          </Center>
-        </>
-      </Box>
-    </ChakraProvider>
-  )
+    const { user, login, logout } = useAuth();
+    return (
+        <ChakraProvider>
+            <Box>
+                <>
+                    <Header pageName="Profile" />
+                    <Center bg="grey" color="white" padding={8} minH="80vh">
+                        {!user && <LoginForm onSubmit={login} />}
+                    </Center>
+                </>
+            </Box>
+        </ChakraProvider>
+    )
 }
 
