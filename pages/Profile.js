@@ -17,7 +17,7 @@ export default function Profile()
         <ChakraProvider>
             <Box>
                 <>
-                    <Header pageName="Profile" />
+                    <Header pageName="Profile" color/>
                     <Center bg="grey" color="white" padding={8} minH="80vh">
                         {!user && <LoginForm onSubmit={login} />}
                     </Center>
