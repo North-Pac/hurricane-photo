@@ -20,6 +20,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Link from 'next/link'
 import LoginForm from '../components/LoginForm'
 import { signOut } from "next-auth/react";
+import Header from "../components/Header";
 
 
 function Upload() {
@@ -28,9 +29,6 @@ function Upload() {
     const [allPhotos, setAllPhotos] = useState([]);
     const [uploadSuccessful, setUploadSuccessful] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
-    
-
- 
 
     useEffect(() => {
         fetch("https://photo-faker.vercel.app/api/photos")
@@ -84,7 +82,7 @@ function Upload() {
                   Logout
                 </a>
               </Link>
-            <Center bg="black" color="white" padding={8}>
+            <Center bg="grey" color="white" padding={8}>
                 <VStack spacing={7}>
                     <Heading>Photo Upload Page</Heading>
                     {/* <Text>Your Photo Gallery</Text> */}
@@ -96,7 +94,7 @@ function Upload() {
                         ></input>
 
                         <Button
-                            size="lg"
+                            size="sm"
                             colorScheme="red"
                             isDisabled={!isSelected}
                             onClick={onFileUpload}
@@ -109,7 +107,7 @@ function Upload() {
                             </Center>
                         )}
                     </HStack>
-                    <Heading>Your Photo Gallery</Heading>
+                    <Heading fontSize={30}>This is Your Photo Gallery</Heading>
                     <SimpleGrid columns={3} spacing={8}>
                         {allPhotos.length !== 0 &&
                             allPhotos.map((photo, index) => {
