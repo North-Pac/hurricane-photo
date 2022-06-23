@@ -28,26 +28,26 @@ function Upload()
 {
     const [isSelected, setIsSelected] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [allPhotos, setAllPhotos] = useState([]);
+    const [allPhotos, setAllPhotos] = useState({});
     const [uploadSuccessful, setUploadSuccessful] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
-
     useEffect(() =>
     {
-        fetch("http://127.0.0.1:8000/photos")
+        fetch("http://127.0.0.1:8000/gallery")
             .then((response) => response.json())
             .then((data) =>
             {
+                
                 console.log(data);
                 setAllPhotos(data);
             });
+            
     }, [uploadSuccessful]);
 
     const onInputChange = (e) =>
     {
         console.log(e.target.files[0]);
         setIsSelected(true);
-
         setSelectedFile(e.target.files[0]);
     };
     const onButtonClick = (e) =>
@@ -60,8 +60,6 @@ function Upload()
     {
         signOut();
     };
-
-
 
     const onFileUpload = (e) =>
     {
@@ -79,9 +77,9 @@ function Upload()
                 setUploadSuccessful(!uploadSuccessful);
                 setShowSpinner(false);
             });
+            console.log(allPhotos)
     };
     return (
-
         <ChakraProvider>
             <Header pageName="(色色)" color='white'></Header>
             <Center bg="grey" color="white" padding={8}>
@@ -94,14 +92,12 @@ function Upload()
                             onChange={onInputChange}
                             onClick={onButtonClick}
                         ></input>
-
                         <Button
                             size="sm"
-                            colorScheme="red"
+                            colorScheme="blue"
                             isDisabled={!isSelected}
                             onClick={onFileUpload}
-                        >
-                            Upload Photo
+                        >Upload Photo
                         </Button>
                         {showSpinner && (
                             <Center>
@@ -109,22 +105,26 @@ function Upload()
                             </Center>
                         )}
                     </HStack>
-                    <Heading fontSize={30}>This is Your Photo Gallery</Heading>
+                    <Heading fontSize={30}>Photo Gallery</Heading>
                     <SimpleGrid columns={3} spacing={8}>
-                        {allPhotos.length !== 0 &&
-                            allPhotos.map((photo, index) =>
+                        
+                        {allPhotos.colorized_set &&
+                            allPhotos.colorized_set.map((photo, index) =>
                             {
-                                return (
-                                    <Image
-                                        alt=""
-                                        key={index}
-                                        borderRadius={25}
-                                        boxSize="300px"
-                                        src={photo["photo_url"]}
-                                        fallbackSrc="https://via.placeholder.com/150"
-                                        objectFit="cover"
-                                    />
-
+                                return ( 
+                                <>
+                                    <a href={photo}>
+                                        <Image
+                                            alt=""
+                                            key={index}
+                                            borderRadius={25}
+                                            boxSize="300px"
+                                            src={photo}
+                                            fallbackSrc="https://via.placeholder.com/150"
+                                            objectFit="cover"
+                                        />
+                                    </a>
+                                </>
                                 );
                             })}
                     </SimpleGrid>

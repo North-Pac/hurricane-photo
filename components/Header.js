@@ -37,12 +37,7 @@ export default function Header(props)
                     Iro Iro
                 </Link>
             </Heading>
-
-            
-
-            <Text textColor="rgb(148 163 184)" fontSize="x-large" fontWeight="bold" align="center" margin=".5rem 0rem" padding="0rem 1rem">{props.pageName}
-
-            </Text>
+            <Text textColor="rgb(148 163 184)" fontSize="x-large" fontWeight="bold" align="center" margin=".5rem 0rem" padding="0rem 1rem">{props.pageName}</Text>
             <Box display="flex" margin="0rem 0.5rem" justifyContent="right">
                 <ButtonGroup spacing="1" alignContent="right">
                     <Button bg="d6ccc2" size='xs' borderRadius="5" margin=".5rem .1rem" padding="6" textColor="rgb(148 163 184)"
