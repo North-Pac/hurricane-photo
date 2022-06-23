@@ -34,7 +34,7 @@ function Upload()
 
     useEffect(() =>
     {
-        fetch("https://photo-faker.vercel.app/api/photos")
+        fetch("http://127.0.0.1:8000/photos")
             .then((response) => response.json())
             .then((data) =>
             {
@@ -68,7 +68,7 @@ function Upload()
         setShowSpinner(true);
         const formData = new FormData();
         formData.append("file", selectedFile, selectedFile.name);
-        fetch("https://photo-faker.vercel.app/api/photos", {
+        fetch("http://127.0.0.1:8000/photos", {
             method: "POST",
             body: formData,
         })
@@ -83,10 +83,10 @@ function Upload()
     return (
 
         <ChakraProvider>
-            <Header pageName="Upload"></Header>
+            <Header pageName="(色色)" color='white'></Header>
             <Center bg="grey" color="white" padding={8}>
                 <VStack spacing={7}>
-                    <Heading>Photo Upload Page</Heading>
+                    <Heading>Upload</Heading>
                     {/* <Text>Your Photo Gallery</Text> */}
                     <HStack>
                         <input
