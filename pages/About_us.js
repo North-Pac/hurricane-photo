@@ -1,6 +1,7 @@
 import Header from '../components/Header'
 import { Center, ChakraProvider, Flex, Image, Link } from "@chakra-ui/react";
 import Bio from '../components/bio'
+import Footer from '../components/Footer'
 
 export default function About_us()
 {
@@ -45,7 +46,7 @@ export default function About_us()
     return (
         <ChakraProvider>
             <Header pageName="About Us" />
-            <Center bg="grey">
+            <Center bg="grey" marginBottom="50px">
                 <Flex flexWrap="wrap" justifyContent="center">
                     {members.map((item, index) =>
                     {
@@ -53,6 +54,7 @@ export default function About_us()
                     })}
                 </Flex>
             </Center>
+            <Footer />
         </ChakraProvider>
     )
 }
