@@ -1,17 +1,18 @@
-import {
-Center,
-Text,
-Heading,
-VStack,
-Button,
-Input,
-HStack,
-Container,
-SimpleGrid,
-Box,
-Image,
-Spinner,
-} from "@chakra-ui/react";
+import
+    {
+        Center,
+        Text,
+        Heading,
+        VStack,
+        Button,
+        Input,
+        HStack,
+        Container,
+        SimpleGrid,
+        Box,
+        Image,
+        Spinner,
+    } from "@chakra-ui/react";
 
 import { useState, useEffect } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -20,45 +21,50 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Link from 'next/link'
 import LoginForm from '../components/LoginForm'
 import { signOut } from "next-auth/react";
+import Header from "../components/Header";
 
 
-function Upload() {
+function Upload()
+{
     const [isSelected, setIsSelected] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [allPhotos, setAllPhotos] = useState([]);
     const [uploadSuccessful, setUploadSuccessful] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
-    
 
- 
-
-    useEffect(() => {
+    useEffect(() =>
+    {
         fetch("https://photo-faker.vercel.app/api/photos")
             .then((response) => response.json())
-            .then((data) => {
+            .then((data) =>
+            {
                 console.log(data);
                 setAllPhotos(data);
             });
     }, [uploadSuccessful]);
 
-    const onInputChange = (e) => {
+    const onInputChange = (e) =>
+    {
         console.log(e.target.files[0]);
         setIsSelected(true);
 
         setSelectedFile(e.target.files[0]);
     };
-    const onButtonClick = (e) => {
+    const onButtonClick = (e) =>
+    {
         console.log("Button clicked..");
         e.target.value = "";
     };
 
-    const logoutHandler = () => {
+    const logoutHandler = () =>
+    {
         signOut();
-      };
+    };
 
 
 
-    const onFileUpload = (e) => {
+    const onFileUpload = (e) =>
+    {
         setShowSpinner(true);
         const formData = new FormData();
         formData.append("file", selectedFile, selectedFile.name);
@@ -67,24 +73,18 @@ function Upload() {
             body: formData,
         })
             .then((response) => response.json())
-            .then((data) => {
+            .then((data) =>
+            {
                 console.log("Success posting!!");
                 setUploadSuccessful(!uploadSuccessful);
                 setShowSpinner(false);
             });
     };
     return (
-      
+
         <ChakraProvider>
-                 <Link href="/">
-                <a
-                  className="text-danger"
-                  onClick={logoutHandler}
-                >
-                  Logout
-                </a>
-              </Link>
-            <Center bg="black" color="white" padding={8}>
+            <Header pageName="Upload"></Header>
+            <Center bg="grey" color="white" padding={8}>
                 <VStack spacing={7}>
                     <Heading>Photo Upload Page</Heading>
                     {/* <Text>Your Photo Gallery</Text> */}
@@ -96,7 +96,7 @@ function Upload() {
                         ></input>
 
                         <Button
-                            size="lg"
+                            size="sm"
                             colorScheme="red"
                             isDisabled={!isSelected}
                             onClick={onFileUpload}
@@ -109,10 +109,11 @@ function Upload() {
                             </Center>
                         )}
                     </HStack>
-                    <Heading>Your Photo Gallery</Heading>
+                    <Heading fontSize={30}>This is Your Photo Gallery</Heading>
                     <SimpleGrid columns={3} spacing={8}>
                         {allPhotos.length !== 0 &&
-                            allPhotos.map((photo, index) => {
+                            allPhotos.map((photo, index) =>
+                            {
                                 return (
                                     <Image
                                         alt=""
@@ -123,7 +124,7 @@ function Upload() {
                                         fallbackSrc="https://via.placeholder.com/150"
                                         objectFit="cover"
                                     />
-                                
+
                                 );
                             })}
                     </SimpleGrid>
