@@ -20,13 +20,17 @@ The photos are stored in an AWS S3  bucket. They are uploaded and retrieved via 
 
 The project was hosted on Heroku, but has recently been taken down. We are considering other hosting options. In the meantime, this project can be used locally.
 
+[Contributions](https://github.com/North-Pac/hurricane-photo-frontend/graphs/contributors)
+
+[Backend Contributions](https://github.com/North-Pac/ben-backend-test/graphs/contributors)
+
 ![nic-cage-bw.png](images/nic-cage-bw.png)
 
 ![nic-cage-color.png](images/nic-cage-color.png)
 
 ## How to run locally
 
-In order to run Iro Iro locally, fork the https://github.com/North-Pac/ben-backend-test and https://github.com/North-Pac/hurricane-photo-frontend repositories.
+In order to run Iro Iro locally, clone the https://github.com/rsw359/Iro-Iro and https://github.com/rsw359/Iro-Iro-Backend repositories.
 
 ### Frontend
 
