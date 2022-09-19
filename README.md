@@ -16,7 +16,7 @@ Tools: Next, Python, React
 
 The purpose of this project is to provide an easy way to add color to photos taken in black and white. The project utilizes an open source machine learning model called OpenCV (or Open Computer Vision) to colorize uploaded photographs.
 
-The photos are stored in an AWS S3  bucket. They are uploaded and retrieved via Amazon’s Boto3 tool via Fast API. The front end UI is built in React.
+The photos are stored in an AWS S3  bucket. They are uploaded and retrieved using Amazon’s Boto3 tool via Fast API. The front end UI is built in React.
 
 The project was hosted on Heroku, but has recently been taken down. We are considering other hosting options. In the meantime, this project can be used locally.
 
